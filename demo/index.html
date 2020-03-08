@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div{
+      background-color: red;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+
+  </div>
+
+  <script>
+
+    Promise.all([
+
+      // 异步任务1
+      new Promise((resolve, reject)=>{
+        // 使用定时器模拟任务
+        setTimeout(()=>{
+          resolve('第一件事完成了')
+        },1000)
+      }),
+
+      // 异步任务2
+      new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+          resolve()
+        },2000)
+      }),
+      // 异步任务3
+      new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+          resolve('第三个成功')
+          //reject('第三件事完失败')
+        },2000)
+      }),
+    ]).then(results=>{  // 执行的结果全部存在数组中, 序号与任务添加的新婚徐一直
+      console.log(results);
+    })
+      .catch(errors=>{
+        console.log(errors);
+      })
+  </script>
+
+</body>
+</html>
